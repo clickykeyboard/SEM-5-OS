@@ -35,13 +35,32 @@ int main() {
 
   /* Completion Time */
   int completionTime[processes] = {0};
+  int completionSum = 0;
+  for (int i = 0; i < processes; i++) {
+    /* Get burst time of processes in order from gantt chart
+       and then add their sums */
+    completionSum += completedBurstTime[ganttChart[i]];
+    completionTime[ganttChart[i]] = completionSum;
+  }
 
-  /* We get the index (number) of first executed process from gantt chart
-     and then we get its burst time from that index */
-  completionTime[0] = completedBurstTime[ganttChart[0]];
-  for (int i = 1; i < processes; i++)
-    completionTime[i] = completionTime[i - 1] + completedBurstTime[ganttChart[i]];
+  /* Turnaround Time (CT - AT) */
+  int turnaroundTime[processes] = {0};
+  for (int i = 0; i < processes; i++) {
+    turnaroundTime[i] = completionTime[i] - 0;
+  }
 
-  for (int i = 0; i < processes; i++)
-    cout << endl << completionTime[i] << endl;
+  /* Waiting Time (TAT - BT)*/
+  int waitingTime[processes] = {0};
+  for (int i = 0; i < processes; i++) {
+    waitingTime[i] = turnaroundTime[i] - completedBurstTime[i];
+  }
+
+  cout << endl << "P\t" << "BT\t" << "CT\t" << "TAT\t" << "WT" << endl;
+  for (int i = 0; i < processes; i++) {
+    cout << "P" << i << "\t"
+      << completedBurstTime[i] << "\t"
+      << completionTime[i] << "\t"
+      << turnaroundTime[i] << "\t"
+      << waitingTime[i] << endl;
+  }
 }

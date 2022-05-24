@@ -3,7 +3,7 @@ using namespace std;
 
 int main() {
   int processes;
-  cout << "Enter processes" << endl;
+  cout << "Enter number of processes: ";
   cin >> processes;
 
   int ganttChart[processes];
@@ -14,7 +14,7 @@ int main() {
 
   /* Getting arrival times and burst times  */
   for (int i = 0; i < processes; i++) {
-    cout << "Enter burst time for process " << i << endl;
+    cout << "Enter burst time for process " << i << ": ";
     cin >> burstTime[i];
   }
 

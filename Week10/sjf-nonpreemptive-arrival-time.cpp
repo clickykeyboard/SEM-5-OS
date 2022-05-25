@@ -16,8 +16,8 @@ void determineProcessesInReadyQueue(int *arrivalTime, int *completedArrivalTime,
       readyQueue.insert(i); // Insert process in ready queue
       completedArrivalTime[i] = arrivalTime[i]; // Copy completed arrival time to new array
       arrivalTime[i] = 9999; // Set arrival time to a high value so it doesn't count next iteration
-     }
-   }
+    }
+  }
 }
 
 int determineShortestJob(int *burstTime) {

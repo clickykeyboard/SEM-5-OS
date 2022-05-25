@@ -23,9 +23,8 @@ void determineProcessesInReadyQueue(int *arrivalTime, int *completedArrivalTime,
 int determineShortestJob(int *burstTime) {
   int minimumBurstTimeProcess = *readyQueue.begin(); // This will give us burst time for first process in ready queuequeue
   for (process = ++readyQueue.begin(); process != readyQueue.end(); process++) // Now we compare burst time for each process in ready queue
-    if (burstTime[*process] < burstTime[minimumBurstTimeProcess]) {
+    if (burstTime[*process] < burstTime[minimumBurstTimeProcess])
       minimumBurstTimeProcess = *process;
-  	}
 
   /* Return process number with lowest burst time */
   return minimumBurstTimeProcess;
@@ -89,13 +88,14 @@ int main() {
   int turnaroundTime[processes] = {0}; /* Turnaround time (CT - AT) */
   int waitingTime[processes] = {0}; /* Waiting time (TAT - BT) */
   for (int i = 0; i < processes; i++) {
-  	turnaroundTime[i] = completionTime[i] - completedArrivalTime[i];
-  	waitingTime[i] = turnaroundTime[i] - completedBurstTime[i];
+    turnaroundTime[i] = completionTime[i] - completedArrivalTime[i];
+    waitingTime[i] = turnaroundTime[i] - completedBurstTime[i];
   }
   
-  cout << endl << "P\t" << "BT\t" << "CT\t" << "TAT\t" << "WT" << endl;
+  cout << endl << "P\t" << "AT\t" << "BT\t" << "CT\t" << "TAT\t" << "WT" << endl;
   for (int i = 0; i < processes; i++) {
     cout << "P" << i << "\t"
+      << completedArrivalTime[i] << "\t"
       << completedBurstTime[i] << "\t"
       << completionTime[i] << "\t"
       << turnaroundTime[i] << "\t"

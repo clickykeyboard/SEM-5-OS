@@ -41,7 +41,6 @@ int main() {
   int burstTime[processes];
   
   int currentCPUTime = 0;
-  int totalCPUTime = 0;
 
   int ganttChart[processes];
   int completedBurstTime[processes];
@@ -53,8 +52,6 @@ int main() {
     cout << "Enter burst time for process " << i << ": ";
     cin >> burstTime[i];
     cout << "---------------------------------" << endl;
-    
-    totalCPUTime += burstTime[i];
   }
   
   determineProcessesInReadyQueue(arrivalTime, completedArrivalTime, currentCPUTime, processes);

@@ -8,16 +8,16 @@ set<int> readyQueue;
 set<int>::iterator process;
 
 void determineProcessesInReadyQueue(int *arrivalTime, int *completedArrivalTime, int currentCPUTime, int processes) {
-	for (int i = 0; i < processes; i++) {
-		if (readyQueue.contains(i)) // If process already exists in ready queue, continue with next process
-			continue;
+  for (int i = 0; i < processes; i++) {
+    if (readyQueue.contains(i)) // If process already exists in ready queue, continue with next process
+      continue;
 		
-		if (arrivalTime[i] <= currentCPUTime) {
-			readyQueue.insert(i); // Insert process in ready queue
-			completedArrivalTime[i] = arrivalTime[i]; // Copy completed arrival time to new array
-			arrivalTime[i] = 9999; // Set arrival time to a high value so it doesn't count next iteration
-		}
-	}
+    if (arrivalTime[i] <= currentCPUTime) {
+      readyQueue.insert(i); // Insert process in ready queue
+      completedArrivalTime[i] = arrivalTime[i]; // Copy completed arrival time to new array
+      arrivalTime[i] = 9999; // Set arrival time to a high value so it doesn't count next iteration
+     }
+   }
 }
 
 int determineShortestJob(int *burstTime) {

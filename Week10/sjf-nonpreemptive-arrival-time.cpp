@@ -53,22 +53,19 @@ int main() {
     cout << "---------------------------------" << endl;
   }
   
-  determineProcessesInReadyQueue(arrivalTime, completedArrivalTime, currentCPUTime, processes);
-  
   for (int i = 0; i < processes; i++) {
-  	int shortestJobProcessNumber = determineShortestJob(burstTime);
-  	// Set process in gantt chart
-  	ganttChart[i] = shortestJobProcessNumber;
+    determineProcessesInReadyQueue(arrivalTime, completedArrivalTime, currentCPUTime, processes);
+    int shortestJobProcessNumber = determineShortestJob(burstTime);
+    // Set process in gantt chart
+    ganttChart[i] = shortestJobProcessNumber;
   	
-  	// Remove from queue, set burst time to high value so it does not count for next iteration, copy burst time to another array
-  	readyQueue.erase(shortestJobProcessNumber);
-  	completedBurstTime[shortestJobProcessNumber] = burstTime[shortestJobProcessNumber];
-  	burstTime[shortestJobProcessNumber] = 9999;
+    // Remove from queue, set burst time to high value so it does not count for next iteration, copy burst time to another array
+    readyQueue.erase(shortestJobProcessNumber);
+    completedBurstTime[shortestJobProcessNumber] = burstTime[shortestJobProcessNumber];
+    burstTime[shortestJobProcessNumber] = 9999;
   	
-  	// Update CPU time
-  	currentCPUTime += completedBurstTime[shortestJobProcessNumber];
-  	
-  	determineProcessesInReadyQueue(arrivalTime, completedArrivalTime, currentCPUTime, processes);
+    // Update CPU time
+    currentCPUTime += completedBurstTime[shortestJobProcessNumber];
   }
   
   for (int i = 0; i < processes; i++) {

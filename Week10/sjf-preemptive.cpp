@@ -9,7 +9,7 @@ int processes;
 int currentCPUTime = 0;
 int totalCPUTime = 0;
 
-void determineReadyQueue(int *arrivalTime, int *completedArrivalTime) {
+void determineReadyQueue(int *arrivalTime) {
   for (int i = 0; i < processes; i++) {
     if (readyQueue.contains(i))
       continue;
@@ -62,7 +62,7 @@ int main() {
   int ganttChart[totalCPUTime];
 
   for (int i = 0; i < totalCPUTime; i++) {
-    determineReadyQueue(arrivalTime, completedArrivalTime);
+    determineReadyQueue(arrivalTime);
 
     int shortestJobProcessNumber = getShortestJobProcess(burstTime);
     ganttChart[i] = shortestJobProcessNumber;

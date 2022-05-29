@@ -4,9 +4,8 @@ using namespace std;
 int determineShortestJob(int *burstTime, int processes) {
   int minimumBurstTimeIndex = 0;
   for (int i = 1; i < processes; i++) {
-    if ((burstTime[i] > 0) && (burstTime[i] < burstTime[minimumBurstTimeIndex])) {
+    if (burstTime[i] < burstTime[minimumBurstTimeIndex])
       minimumBurstTimeIndex = i;
-    }
   }
 
   /* Return process number with lowest burst time */

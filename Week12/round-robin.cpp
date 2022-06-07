@@ -55,7 +55,7 @@ int main() {
 	/* Round Robin Scheduling */
 	int completedProcesses = 0;
 	while (completedProcesses != processes) {
-	    determineReadyQueue(totalArrivalTime, totalBurstTime);
+	    determineReadyQueue(remainingArrivalTime, remainingBurstTime);
 	    
 	    processJustExecuted = readyQueue.front();
 	    readyQueue.pop_front();

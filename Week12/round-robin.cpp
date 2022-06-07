@@ -71,16 +71,15 @@ int main() {
 	    /* Gantt chart */
 		cout << "|P" << processJustExecuted << "|";
 		
+	    currentCPUTime += timeQuantum;
 	    if (remainingBurstTime[processJustExecuted] <= 0) {
 	        completionTime[processJustExecuted] = currentCPUTime + 1;
 	        
 	        remainingBurstTime[processJustExecuted] = 9999;
-            remainingArrivalTime[processJustExecuted] = 9999;
+            	remainingArrivalTime[processJustExecuted] = 9999;
             
-            completedProcesses++;
+            	completedProcesses++;
 	    }
-	    
-	    currentCPUTime += timeQuantum;
 	}
 	
 	int turnaroundTime[processes] = {0}; /* Turnaround time (CT - AT) */

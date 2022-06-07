@@ -54,12 +54,19 @@ int main() {
 	
 	/* Round Robin Scheduling */
 	int completedProcesses = 0;
+	int modifiedTimeQuantum;
 	while (completedProcesses != processes) {
+	    modifiedTimeQuantum = timeQuantum;
+	
 	    determineReadyQueue(remainingArrivalTime, remainingBurstTime);
 	    
 	    processJustExecuted = readyQueue.front();
 	    readyQueue.pop_front();
-	    remainingBurstTime[processJustExecuted] -= timeQuantum;
+		
+	    if (remainingBurstTime[processJustExecuted] < timeQuantum)
+	        modifiedTimeQuantum = remainingBurstTime[processJustExecuted];
+		
+	    remainingBurstTime[processJustExecuted] -= modifiedTimeQuantum;
 	    
 	    /* Gantt chart */
 		cout << "|P" << processJustExecuted << "|";

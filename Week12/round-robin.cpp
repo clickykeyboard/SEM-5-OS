@@ -69,7 +69,6 @@ int main() {
     remainingBurstTime[processJustExecuted] -= modifiedTimeQuantum;
     
     /* Gantt chart */
-    cout << " | " << currentCPUTime << " | ";
     cout << "|P" << processJustExecuted + 1<< "|";
 
     currentCPUTime += modifiedTimeQuantum;
@@ -82,8 +81,6 @@ int main() {
       completedProcesses++;
     }
   }
-	
-  cout << " | " << currentCPUTime << " | ";
 
   int turnaroundTime[processes] = {0}; /* Turnaround time (CT - AT) */
   int waitingTime[processes] = {0}; /* Waiting time (TAT - BT) */

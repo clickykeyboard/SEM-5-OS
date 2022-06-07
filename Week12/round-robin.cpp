@@ -56,7 +56,7 @@ int main() {
   int completedProcesses = 0;
   int modifiedTimeQuantum;
   while (completedProcesses != processes) {
-  	modifiedTimeQuantum = timeQuantum;
+    modifiedTimeQuantum = timeQuantum;
   	
     determineReadyQueue(remainingArrivalTime, remainingBurstTime);
     
@@ -64,7 +64,7 @@ int main() {
     readyQueue.pop_front();
     
     if (remainingBurstTime[processJustExecuted] < timeQuantum)
-    	modifiedTimeQuantum = remainingBurstTime[processJustExecuted];
+      modifiedTimeQuantum = remainingBurstTime[processJustExecuted];
     
     remainingBurstTime[processJustExecuted] -= modifiedTimeQuantum;
     
@@ -74,7 +74,6 @@ int main() {
 
     currentCPUTime += modifiedTimeQuantum;
     if (remainingBurstTime[processJustExecuted] <= 0) {
-    
       completionTime[processJustExecuted] = currentCPUTime;
         
       remainingBurstTime[processJustExecuted] = 9999;
@@ -82,10 +81,9 @@ int main() {
           
       completedProcesses++;
     }
-    
-	}
+  }
 	
-	cout << " | " << currentCPUTime << " | ";
+  cout << " | " << currentCPUTime << " | ";
 
   int turnaroundTime[processes] = {0}; /* Turnaround time (CT - AT) */
   int waitingTime[processes] = {0}; /* Waiting time (TAT - BT) */

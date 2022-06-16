@@ -10,7 +10,6 @@ struct Semaphore {
 void wait(int chopstick) {
 	if (semaphore.chopsticks[chopstick] == 0) {
 		cout << "Chopstick already in use" << endl;
-		
 		while (semaphore.chopsticks[chopstick] == 0);
 	}
 	

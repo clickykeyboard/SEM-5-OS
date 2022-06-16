@@ -55,7 +55,6 @@ void signal(int operation) {
 		case MUTEX:
 			/* If a process is currently holding lock to increment "readers", release lock */
 			semaphore.mutex = 0;
-			break;
 	}
 }
 
